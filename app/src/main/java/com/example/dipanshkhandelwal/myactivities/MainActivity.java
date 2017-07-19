@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks{
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
