@@ -29,7 +29,7 @@ public class DetectedActivitiesIntentService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        ActivityRecognitionResult result = new ActivityRecognitionResult.extractResult(intent);
+        ActivityRecognitionResult result = ActivityRecognitionResult.extractResult(intent);
         Intent localIntent = new Intent(Constants.BROADCAST_ACTION);
 
         ArrayList<DetectedActivity> detectedActivities = (ArrayList) result.getProbableActivities();
