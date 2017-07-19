@@ -1,5 +1,6 @@
 package com.example.dipanshkhandelwal.myactivities;
 
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -83,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         requestUpdates.setEnabled(false);
         removeUpdates.setEnabled(true);
+    }
+
+    private PendingIntent getActivityDetectionPendingIntent() {
+        Intent intent = new Intent(this, DetectedActivitiesIntentService.class);
+
+        // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when calling
+        // requestActivityUpdates() and removeActivityUpdates().
+        return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
