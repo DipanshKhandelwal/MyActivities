@@ -1,5 +1,6 @@
 package com.example.dipanshkhandelwal.myactivities;
 
+import android.content.BroadcastReceiver;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -49,4 +50,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+}
+
+public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
+
 }
