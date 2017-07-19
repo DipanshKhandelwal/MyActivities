@@ -1,6 +1,9 @@
 package com.example.dipanshkhandelwal.myactivities;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
+import com.google.android.gms.location.DetectedActivity;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
 
@@ -50,8 +54,38 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
+        protected static final String TAG = "receiver";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    }
+
+    public String getActivityString(int detectedActivityType) {
+        Resources resources = this.getResources();
+        switch(detectedActivityType) {
+            case DetectedActivity.IN_VEHICLE:
+                return resources.getString(R.string.in_vehicle);
+            case DetectedActivity.ON_BICYCLE:
+                return resources.getString(R.string.on_bicycle);
+            case DetectedActivity.ON_FOOT:
+                return resources.getString(R.string.on_foot);
+            case DetectedActivity.RUNNING:
+                return resources.getString(R.string.running);
+            case DetectedActivity.STILL:
+                return resources.getString(R.string.still);
+            case DetectedActivity.TILTING:
+                return resources.getString(R.string.tilting);
+            case DetectedActivity.UNKNOWN:
+                return resources.getString(R.string.unknown);
+            case DetectedActivity.WALKING:
+                return resources.getString(R.string.walking);
+            default:
+                return resources.getString(R.string.unidentifiable_activity, detectedActivityType);
+        }
+    }
 }
 
-public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
-
-}
