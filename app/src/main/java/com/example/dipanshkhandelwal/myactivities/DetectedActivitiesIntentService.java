@@ -23,6 +23,11 @@ public class DetectedActivitiesIntentService extends IntentService{
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
     protected void onHandleIntent(Intent intent) {
         ActivityRecognitionResult result = new ActivityRecognitionResult.extractResult(intent);
         Intent localIntent = new Intent(Constants.BROADCAST_ACTION);
