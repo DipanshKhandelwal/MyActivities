@@ -131,7 +131,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     @Override
     public void onResult(@NonNull Status status) {
-        
+        if (status.isSuccess()) {
+            Log.e(TAG, "Successfully added activity detection.");
+
+        } else {
+            Log.e(TAG, "Error adding or removing activity detection: " + status.getStatusMessage());
+        }
     }
 
     public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
