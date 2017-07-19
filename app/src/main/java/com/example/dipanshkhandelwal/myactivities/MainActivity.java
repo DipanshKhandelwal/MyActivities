@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.ActivityRecognition;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
 
@@ -20,6 +21,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buildGoogleApiClient();
+    }
+
+    protected synchronized void buildGoogleApiClient(){
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(ActivityRecognition.API)
+                .build();
     }
 
     @Override
