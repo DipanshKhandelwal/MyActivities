@@ -65,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         mGoogleApiClient.connect();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
+    }
+
     public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
         protected static final String TAG = "receiver";
 
