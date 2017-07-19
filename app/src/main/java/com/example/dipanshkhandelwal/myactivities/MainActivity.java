@@ -3,7 +3,9 @@ package com.example.dipanshkhandelwal.myactivities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.gms.common.api.GoogleApiClient;
+
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
