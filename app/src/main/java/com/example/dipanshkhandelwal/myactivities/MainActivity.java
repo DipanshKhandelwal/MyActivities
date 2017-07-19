@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mStatusTextView = (TextView) findViewById(R.id.detectedActivities);
+        requestUpdates = (Button) findViewById(R.id.request_activity_updates_button);
+        removeUpdates = (Button) findViewById(R.id.remove_activity_updates_button);
         buildGoogleApiClient();
     }
 
