@@ -82,6 +82,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 new IntentFilter(Constants.BROADCAST_ACTION));
     }
 
+    @Override
+    protected void onPause() {
+        // Unregister the broadcast receiver that was registered during onResume().
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+        super.onPause();
+    }
+
     public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
         protected static final String TAG = "receiver";
 
