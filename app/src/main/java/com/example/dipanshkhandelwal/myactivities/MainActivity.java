@@ -25,7 +25,7 @@ import com.google.android.gms.location.DetectedActivity;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener , ResultCallback<Status>{
 
     protected static final String TAG="recognition_activity";
 
@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         // Unregister the broadcast receiver that was registered during onResume().
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
         super.onPause();
+    }
+
+    @Override
+    public void onResult(@NonNull Status status) {
+        
     }
 
     public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
