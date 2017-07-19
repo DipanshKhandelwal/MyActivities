@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
 
+    protected  ActivityDetectionBroadcastReciever mBroadcastReceiver;
     protected  GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
     private Button requestUpdates;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         mStatusTextView = (TextView) findViewById(R.id.detectedActivities);
         requestUpdates = (Button) findViewById(R.id.request_activity_updates_button);
         removeUpdates = (Button) findViewById(R.id.remove_activity_updates_button);
+        mBroadcastReceiver = new ActivityDetectionBroadcastReciever();
         buildGoogleApiClient();
     }
 
