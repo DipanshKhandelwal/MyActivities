@@ -16,6 +16,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
 import com.google.android.gms.location.DetectedActivity;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks , GoogleApiClient.OnConnectionFailedListener{
 
     protected  GoogleApiClient mGoogleApiClient;
@@ -60,7 +62,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            ArrayList<DetectedActivity> updatedActivities = intent.getParcelableArrayListExtra(Constants.ACTIVITY_EXTRA);
 
+            String strStatus = "";
+            for(DetectedActivity thisActivity : updatedActivities){
+                strStatus += getActivityString(thisActivity.getType())+thisActivity.getConfidence() + "%\n";
+            }
+            mStatusTextView.setText(strStatus);
         }
     }
 
