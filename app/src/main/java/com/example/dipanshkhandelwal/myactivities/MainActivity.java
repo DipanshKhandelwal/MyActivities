@@ -59,6 +59,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
     public class ActivityDetectionBroadcastReciever extends BroadcastReceiver {
         protected static final String TAG = "receiver";
 
